@@ -1,0 +1,162 @@
+Documentación de la Calculadora Aritmética Modular
+1. Descripción general
+Este proyecto implementa una Calculadora Aritmética Modular en Python. La calculadora realiza operaciones aritméticas básicas (suma, resta, multiplicación, división y potencia) en el contexto de la aritmética modular, donde todas las operaciones se realizan módulo un número primo p. El proyecto consta de una biblioteca de operaciones modulares y una interfaz gráfica de usuario (GUI) para facilitar su uso.
+
+2. Estructura del código
+El proyecto está organizado en dos módulos principales:
+
+operaciones.py: Contiene las funciones para realizar operaciones aritméticas modulares.
+gui.py: Implementa la interfaz gráfica de usuario utilizando Tkinter.
+Módulos principales:
+operaciones.py:
+Funciones de validación y utilidad
+Funciones de operaciones modulares
+Función de evaluación de expresiones
+gui.py:
+Clase CalculadoraModular
+Función crear_interfaz
+3. Documentación detallada de funciones y métodos
+operaciones.py
+validate_inputs(a: int, b: int, p: int) -> None
+Valida que las entradas sean enteros y que p sea un número primo positivo.
+
+Parámetros:
+a: Primer operando
+b: Segundo operando
+p: Módulo primo
+Excepciones:
+ValueError: Si algún argumento no es entero o si p no es primo
+is_prime(n: int) -> bool
+Verifica si un número es primo.
+
+Parámetros:
+n: Número a verificar
+Retorna:
+bool: True si n es primo, False en caso contrario
+mod_add(a: int, b: int, p: int) -> int
+Realiza la suma modular.
+
+Parámetros:
+a: Primer sumando
+b: Segundo sumando
+p: Módulo primo
+Retorna:
+int: Resultado de (a + b) mod p
+Excepciones:
+ValueError: Si las entradas no son válidas
+mod_subtract(a: int, b: int, p: int) -> int
+Realiza la resta modular.
+
+Parámetros:
+a: Minuendo
+b: Sustraendo
+p: Módulo primo
+Retorna:
+int: Resultado de (a - b) mod p
+Excepciones:
+ValueError: Si las entradas no son válidas
+mod_multiply(a: int, b: int, p: int) -> int
+Realiza la multiplicación modular.
+
+Parámetros:
+a: Primer factor
+b: Segundo factor
+p: Módulo primo
+Retorna:
+int: Resultado de (a * b) mod p
+Excepciones:
+ValueError: Si las entradas no son válidas
+mod_divide(a: int, b: int, p: int) -> int
+Realiza la división modular.
+
+Parámetros:
+a: Dividendo
+b: Divisor
+p: Módulo primo
+Retorna:
+int: Resultado de (a / b) mod p
+Excepciones:
+ValueError: Si las entradas no son válidas o si b es cero
+mod_power(base: int, exponent: int, p: int) -> int
+Realiza la exponenciación modular.
+
+Parámetros:
+base: Base
+exponent: Exponente
+p: Módulo primo
+Retorna:
+int: Resultado de (base^exponent) mod p
+Excepciones:
+ValueError: Si las entradas no son válidas o si el exponente es negativo
+evaluate_expression(expression: str, p: int) -> int
+Evalúa una expresión aritmética modular.
+
+Parámetros:
+expression: Expresión aritmética como string
+p: Módulo primo
+Retorna:
+int: Resultado de la evaluación de la expresión mod p
+Excepciones:
+ValueError: Si la expresión no es válida o si p no es primo
+gui.py
+Clase CalculadoraModular
+__init__(self, master: tk.Tk) -> None
+Constructor de la clase CalculadoraModular.
+
+Parámetros:
+master: Ventana principal de Tkinter
+calculate(self) -> None
+Método para realizar el cálculo basado en la entrada del usuario.
+
+Excepciones:
+ValueError: Si la entrada no es válida
+Exception: Para cualquier otro error inesperado
+crear_interfaz() -> None
+Función para crear y mostrar la interfaz gráfica de usuario.
+
+4. Decisiones de diseño y patrones utilizados
+Separación de responsabilidades: Las operaciones matemáticas están separadas de la interfaz de usuario.
+Manejo de errores centralizado: Se utiliza una función de validación común para todas las operaciones.
+Uso de logging: Para facilitar la depuración y el seguimiento de errores.
+Interfaz gráfica simple: Utilizando Tkinter para una fácil interacción del usuario.
+5. Requisitos del sistema y dependencias externas
+Python 3.6 o superior
+Tkinter (generalmente incluido en las instalaciones estándar de Python)
+6. Instrucciones de instalación y configuración
+Asegúrese de tener Python 3.6 o superior instalado.
+Clone o descargue los archivos operaciones.py y gui.py.
+No se requieren pasos adicionales de instalación.
+7. Ejemplos de uso
+
+# Ejemplo de uso de operaciones modulares
+print(mod_add(5, 3, 7))  # Salida: 1
+print(mod_subtract(5, 3, 7))  # Salida: 2
+print(mod_multiply(5, 3, 7))  # Salida: 1
+print(mod_divide(5, 3, 7))  # Salida: 4
+print(mod_power(5, 3, 7))  # Salida: 6
+
+# Para usar la interfaz gráfica
+python gui.py
+8. Manejo de errores y validación de entradas
+Se utilizan bloques try-except para manejar excepciones específicas.
+La función validate_inputs verifica que las entradas sean enteros y que p sea primo.
+Se implementa logging para registrar errores y operaciones exitosas.
+La GUI muestra mensajes de error al usuario mediante cuadros de diálogo.
+9. Seguridad y mejores prácticas
+Validación de entradas para prevenir inyección de código malicioso.
+Uso controlado de eval() para la evaluación de expresiones.
+Logging para auditoría y depuración.
+10. Pruebas
+Se incluyen ejemplos básicos de prueba en operaciones.py.
+Se recomienda implementar pruebas unitarias más exhaustivas utilizando un framework como pytest.
+11. Sugerencias para mejoras futuras
+Implementar un parser más robusto para expresiones matemáticas complejas.
+Agregar soporte para operaciones más avanzadas (e.g., logaritmos modulares, raíces cuadradas modulares).
+Mejorar la interfaz gráfica con más opciones y una mejor presentación de resultados.
+Implementar un historial de cálculos.
+12. Glosario de términos
+Aritmética modular: Sistema aritmético para clases de equivalencia de números enteros.
+Módulo: Número que define el conjunto sobre el cual se realizan las operaciones modulares.
+Número primo: Número natural mayor que 1 que solo es divisible por 1 y por sí mismo.
+Inverso multiplicativo modular: Número que, cuando se multiplica por otro número módulo p, da como resultado 1.
+Esta documentación proporciona una visión completa del proyecto de la Calculadora Aritmética Modular, incluyendo su estructura, funcionamiento, y consideraciones de diseño e implementación. Es una herramienta valiosa para entender, utilizar y potencialmente extender el proyecto en el futuro.
